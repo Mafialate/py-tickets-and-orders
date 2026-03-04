@@ -38,9 +38,13 @@ def update_user(
     if password:
         user.set_password(password)
 
-    user.username = username or user.username
-    user.email = email or user.email
-    user.first_name = first_name or user.first_name
-    user.last_name = last_name or user.last_name
+    if username is not None:
+        user.username = username
+    if email is not None:
+        user.email = email
+    if first_name is not None:
+        user.first_name = first_name
+    if last_name is not None:
+        user.last_name = last_name
 
     user.save()
